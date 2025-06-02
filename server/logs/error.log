@@ -1,0 +1,5 @@
+[2025-06-02 19:10:46,641] ERROR in todo_routes: Error in get_all_todos: Testing error logging
+Traceback (most recent call last):
+  File "/Users/josiasmaldonado/Dev/josias-qr25 fullstack-bootcamp/fullstack-bootcamp/server/app/routes/todo_routes.py", line 35, in get_all_todos
+    raise ValueError("Testing error logging")
+ValueError: Testing error logging
