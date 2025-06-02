@@ -1,5 +1,6 @@
 Hello world. This is my first file.
 
+- Day 1 -
 1. What is version control?
     Version control keeps track of all the changes made to files.
 
@@ -15,3 +16,20 @@ Hello world. This is my first file.
 
 5. What is a pull request?
     A pull request is a request to take some changes and add them to a certain branch.
+
+- Day 2 -
+1. What are the main HTTP methods used in REST APIs?
+    GET, POST, PUT, PATCH, DELETE
+
+2. What is the purpose of Flask blueprints?
+    A blueprint organizes views and logic into a reusable module. It allows for modularity, cleaner code, reusability, avoids circular imports, and scales easily.
+
+3. How do you handle database migrations in Flask?
+    Flask-Migrate, a wrapper of Alembic (migration tool for SQLAlchemy).
+
+4. What is the difference between PUT and PATCH?
+    PUT replaces a resource or overwrites it. PATCH updates a resource or modifies it.
+
+5. Why is API documentation important?
+    API documentation helps developers understand the API, not call it incorrectly, saves them time, and makes the API look professional as well.
+

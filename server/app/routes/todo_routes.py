@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, abort
+from flask import Blueprint, current_app, request, jsonify, abort
 from app import db
 from app.models.todo import Todo
 from app.services.schemas import TodoSchema
@@ -31,14 +31,51 @@ todo_bp = Blueprint('todo', __name__)
     }
 })
 def get_all_todos():
-    todos = Todo.query.all()
-    return jsonify([{
-        'id': t.id,
-        'title': t.title,
-        'description': t.description,
-        'completed': t.completed,
-        'created_at': t.created_at.isoformat()
-    } for t in todos])
+    try:
+        #raise ValueError("Testing error logging")
+        query = Todo.query
+
+        # Filtering
+        completed = request.args.get('completed')
+        if completed is not None:
+            query = query.filter(Todo.completed == (completed.lower() == 'true'))
+
+        title = request.args.get('title')
+        if title:
+            query = query.filter(Todo.title.ilike(f"%{title}%"))
+
+        # Sorting
+        sort_by = request.args.get('sort_by', 'created_at')
+        order = request.args.get('order', 'desc')
+
+        if sort_by in ['title', 'created_at']:
+            column = getattr(Todo, sort_by)
+            column = column.desc() if order == 'desc' else column.asc()
+            query = query.order_by(column)
+
+        # Pagination
+        page = request.args.get('page', 1, type=int)
+        per_page = request.args.get('per_page', 10, type=int)
+        pagination = query.paginate(page=page, per_page=per_page, error_out=False)
+        todos = pagination.items
+
+        return jsonify({
+            'total': pagination.total,
+            'pages': pagination.pages,
+            'current_page': page,
+            'per_page': per_page,
+            'todos': [{
+                'id': t.id,
+                'title': t.title,
+                'description': t.description,
+                'completed': t.completed,
+                'created_at': t.created_at.isoformat()
+            } for t in todos]
+        })
+
+    except Exception as e:
+        current_app.logger.error(f"Error in get_all_todos: {e}", exc_info=True)
+        return jsonify({'error': 'Internal server error'}), 500
 
 @todo_bp.route('/todos/<int:todo_id>', methods=['GET'])
 @swag_from({
