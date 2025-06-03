@@ -33,3 +33,18 @@ Hello world. This is my first file.
 5. Why is API documentation important?
     API documentation helps developers understand the API, not call it incorrectly, saves them time, and makes the API look professional as well.
 
+- Day 3 -
+1. What is the difference between props and state?
+    Props are inputs, whereas state is data.
+
+2. When should you use useEffect?
+    useEffect is for when something need to happen after the render.
+
+3. What are React hooks?
+    Hooks are functions to use React features like state and lifecycle.
+
+4. How do you handle API calls in React?
+    useEffect makes API calls. Inside you can use fetch() or axios and when data comes back, it can be saved to state or useState. 
+
+5. What is the purpose of TypeScript in React?
+    Typescript adds type safety to catch bugs and clean up code.
