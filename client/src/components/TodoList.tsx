@@ -3,12 +3,7 @@ import TodoItem from './TodoItem';
 import AddTodoForm from './AddTodoForm';
 import { getTodos, addTodo, updateTodo, deleteTodo as deleteTodoApi} from '../services/todoService';
 import { Skeleton } from '@mui/material';
-
-interface Todo {
-  id: number;
-  title: string;
-  completed: boolean;
-}
+import { Todo } from '../types/Todo';
 
 const TodoList: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);

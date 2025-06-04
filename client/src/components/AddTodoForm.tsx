@@ -30,7 +30,10 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAdd }) => {
         fullWidth
         value={title}
         onChange={e => setTitle(e.target.value)}
+        error={error}
+        helperText={error ? 'Title cannot be empty' : ''}
       />
+
       <Button type="submit" variant="contained" color="primary">
         Add
       </Button>
