@@ -17,7 +17,7 @@ test('renders todo list title', async () => {
   // Mock getTodos to resolve with fake data
   (todoService.getTodos as jest.Mock).mockResolvedValue([]);
 
-  render(<App />);
+  render(<App darkMode={true} toggleTheme={() => {}} />);
 
   await waitFor(() => {
     expect(screen.getByText('My Todo App')).toBeInTheDocument();
