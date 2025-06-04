@@ -112,7 +112,7 @@ server/
 
 | Light Mode | Dark Mode (Nord) |
 |------------|------------------|
-| ![light](https://via.placeholder.com/300x200.png?text=Light+Mode) | ![dark](https://via.placeholder.com/300x200.png?text=Dark+Mode) |
+| ![Light](client/public/screenshots/lightmode.png) | ![Dark](client/public/screenshots/darkmode.png) |
 
 ---
 
