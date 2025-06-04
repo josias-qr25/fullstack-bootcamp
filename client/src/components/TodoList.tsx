@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TodoItem from './TodoItem';
 import AddTodoForm from './AddTodoForm';
 import { getTodos, addTodo, updateTodo, deleteTodo as deleteTodoApi} from '../services/todoService';
+import { Skeleton } from '@mui/material';
 
 interface Todo {
   id: number;
@@ -15,6 +16,7 @@ const TodoList: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
 useEffect(() => {
+
   const fetchData = async () => {
     try {
       setLoading(true);
@@ -66,28 +68,36 @@ const handleAddTodo = async (title: string) => {
 };
 
   return (
-    <div>
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+  <div>
+    {loading && (
+      <>
+        <Skeleton variant="text" height={40} width="30%" sx={{ mb: 2 }} />
+        <Skeleton variant="rectangular" height={60} sx={{ mb: 1 }} />
+        <Skeleton variant="rectangular" height={60} sx={{ mb: 1 }} />
+        <Skeleton variant="rectangular" height={60} sx={{ mb: 1 }} />
+      </>
+    )}
 
-      {!loading && (
-        <>
-          <h2>Todo List</h2>
+    {error && <p style={{ color: 'red' }}>{error}</p>}
 
-          <AddTodoForm onAdd={handleAddTodo} />
+    {!loading && (
+      <>
+        <h2>Todo List</h2>
 
-          {todos.map(todo => (
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              onToggle={toggleTodo}
-              onDelete={deleteTodo}
-            />
-          ))}
-        </>
-      )}
-    </div>
-  );
+        <AddTodoForm onAdd={handleAddTodo} />
+
+        {todos.map(todo => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onToggle={toggleTodo}
+            onDelete={deleteTodo}
+          />
+        ))}
+      </>
+    )}
+  </div>
+);
 };
 
 export default TodoList;

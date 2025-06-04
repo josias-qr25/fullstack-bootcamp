@@ -7,10 +7,17 @@ interface AddTodoFormProps {
 
 const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAdd }) => {
   const [title, setTitle] = useState('');
+  const [error, setError] = useState(false);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (!title.trim()) return;
+
+    if (!title.trim()) {
+      setError(true);
+      return;
+    }
+
+    setError(false);
     onAdd(title.trim());
     setTitle('');
   };
