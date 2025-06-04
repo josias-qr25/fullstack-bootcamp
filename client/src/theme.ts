@@ -5,11 +5,25 @@ import { PaletteMode } from '@mui/material';
 const getDesignTokens = (mode: PaletteMode) => ({
   palette: {
     mode,
-    ...(mode === 'light'
+    ...(mode === 'dark'
       ? {
-          // Light mode colors
           primary: {
-            main: '#5E81AC',
+            main: '#88C0D0', // Nord Frost — soft blue
+          },
+          background: {
+            default: '#2E3440', // Polar Night
+            paper: '#3B4252',   // Slightly lighter for cards
+          },
+          text: {
+            primary: '#ECEFF4', // Snow Storm
+          },
+          secondary: {
+            main: '#B48EAD', // Nord Aurora (purple)
+          },
+        }
+      : {
+          primary: {
+            main: '#5E81AC', // Slightly darker for light mode
           },
           background: {
             default: '#f4f6f8',
@@ -17,19 +31,6 @@ const getDesignTokens = (mode: PaletteMode) => ({
           },
           text: {
             primary: '#1e1e1e',
-          },
-        }
-      : {
-          // Dark mode colors (Nord-ish)
-          primary: {
-            main: '#8FBCBB',
-          },
-          background: {
-            default: '#2E3440',
-            paper: '#3B4252',
-          },
-          text: {
-            primary: '#ECEFF4',
           },
         }),
   },
