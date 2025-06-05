@@ -92,7 +92,7 @@ pytest
 
 ## Project Structure
 
-'''
+<pre>
 .
 ├── LICENSE
 ├── README.md
@@ -142,7 +142,7 @@ pytest
     ├── run.py
     └── tests
         └── test_todos.py
-'''
+</pre>
 
 ---
 
