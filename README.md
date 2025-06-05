@@ -4,19 +4,19 @@ A modern, fullstack Todo application built with **React**, **TypeScript**, and *
 
 ---
 
-## 🚀 Features
+## Features
 
-- ✅ **Create, complete, and delete todos**
-- 🌗 **Dark mode toggle** with Nord-inspired color palette
-- 🎨 **Custom MUI theming** for consistent styling
-- 📦 **RESTful API** built with Python Flask
-- 🧪 **Unit tests** for backend and frontend components
-- ♻️ **Live reload** during development
-- 📄 **Pagination, filtering, and sorting** (if implemented)
+-  **Create, complete, and delete todos**
+-  **Dark mode toggle** with Nord-inspired color palette
+-  **Custom MUI theming** for consistent styling
+-  **RESTful API** built with Python Flask
+-  **Unit tests** for backend and frontend components
+-  **Live reload** during development
+-  **Pagination, filtering, and sorting** (if implemented)
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 ### Client
 - [React](https://reactjs.org/)
@@ -31,7 +31,7 @@ A modern, fullstack Todo application built with **React**, **TypeScript**, and *
 
 ---
 
-## 💻 Getting Started
+## Getting Started
 
 ### 1. Clone the repo
 
@@ -61,7 +61,7 @@ npm start
 
 ---
 
-## 🌙 Dark Mode + Nord Theming
+## Dark Mode + Nord Theming
 
 This app includes a **theme toggle** with full support for [Nord colors](https://www.nordtheme.com/):
 
@@ -74,7 +74,7 @@ Toggle the theme using the 🌞/🌚 button in the header — the UI updates ins
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Run frontend tests:
 ```bash
@@ -90,25 +90,63 @@ pytest
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
-```
-client/
-  ├── src/
-  │   ├── components/
-  │   ├── pages/
-  │   ├── theme.ts  ← dark/light mode defined here
-  │   └── App.tsx
-server/
-  ├── app/
-  ├── routes/
-  ├── models/
-  └── run.py
-```
+'''
+.
+├── LICENSE
+├── README.md
+├── client
+│   ├── .gitignore
+│   ├── README.md
+│   ├── jest.config.ts
+│   ├── public
+│   │   ├── index.html
+│   │   ├── robots.txt
+│   │   └── screenshots
+│   └── src
+│       ├── App.css
+│       ├── App.test.tsx
+│       ├── App.tsx
+│       ├── components
+│       ├── index.css
+│       ├── index.tsx
+│       ├── logo.svg
+│       ├── pages
+│       ├── react-app-env.d.ts
+│       ├── reportWebVitals.ts
+│       ├── services
+│       ├── setupTests.ts
+│       ├── theme.ts
+│       ├── types
+│       └── utils
+├── quiz-answers.txt
+├── server
+    ├── .env
+    ├── .gitignore
+    ├── app
+    │   ├── __init__.py
+    │   ├── models
+    │   ├── routes
+    │   └── services
+    ├── instance
+    │   └── db.sqlite3
+    ├── logs
+    │   └── error.log
+    ├── migrations
+    │   ├── README
+    │   ├── alembic.ini
+    │   ├── env.py
+    │   └── versions
+    ├── requirements.txt
+    ├── run.py
+    └── tests
+        └── test_todos.py
+'''
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 | Light Mode | Dark Mode (Nord) |
 |------------|------------------|
@@ -116,7 +154,7 @@ server/
 
 ---
 
-## 🧠 About This Project
+## About This Project
 
 This app was built as part of a **Fullstack Bootcamp** focused on strengthening your frontend and backend skills. Technologies were selected to balance real-world experience with educational clarity.
 
@@ -124,13 +162,13 @@ Every file added, feature tweaked, and bug fixed was part of the learning journe
 
 ---
 
-## 🤝 Credits
+## Credits
 
 Built with guidance from OpenAI's ChatGPT 💬 and a lot of persistence.  
 Dark theme inspired by [Nord Theme](https://www.nordtheme.com/).
 
 ---
 
-## 📜 License
+## License
 
 MIT — feel free to fork and remix.
