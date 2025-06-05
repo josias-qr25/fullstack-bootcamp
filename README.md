@@ -70,7 +70,7 @@ This app includes a **theme toggle** with full support for [Nord colors](https:/
 - `#ECEFF4` — Snow Storm (text)
 - `#B48EAD` — Aurora (secondary)
 
-Toggle the theme using the 🌞/🌚 button in the header — the UI updates instantly with MUI's theming system.
+Toggle the theme using the button in the header — the UI updates instantly with MUI's theming system.
 
 ---
 
