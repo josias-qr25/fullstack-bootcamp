@@ -25,7 +25,7 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAdd }) => {
   return (
     <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', gap: 2, mb: 3 }}>
       <TextField
-        label="Enter new todo"
+        label="Enter new todo!"
         variant="outlined"
         fullWidth
         value={title}
