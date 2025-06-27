@@ -1,7 +1,6 @@
 import React from 'react';
 import { IconButton, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Todo } from '../types/Todo';
 
 interface TodoItemProps {
   todo: {

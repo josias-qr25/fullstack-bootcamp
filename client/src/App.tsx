@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoList from './components/TodoList';
 import ErrorBoundary from './components/ErrorBoundary';
-import { Container, IconButton, Typography } from '@mui/material';
+import { IconButton } from '@mui/material';
 import { Brightness4, Brightness7 } from '@mui/icons-material';
 
 interface AppProps {
