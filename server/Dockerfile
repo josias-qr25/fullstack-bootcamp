@@ -25,6 +25,8 @@ RUN pip install --no-cache /wheels/*
 
 COPY . .
 
+RUN chown -R appuser:appgroup /app
+
 USER appuser
 
 EXPOSE 5000
