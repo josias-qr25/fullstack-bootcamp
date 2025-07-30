@@ -2,14 +2,32 @@ version: "3.8"
 
 services:
   backend:
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:${BACKEND_PORT}/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+
     build: ./server
-    ports:
-      - "5000:5000"
+    # Removed `ports:` to block external access
+    expose:
+      - "${BACKEND_PORT}"  # only other containers (like frontend) can access it
     volumes:
       - ./server:/app
       - backend_node_modules:/app/node_modules
     networks:
       - backend_network
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - PG_PASSWORD_FILE=/run/secrets/db_password.txt
+      - JWT_SECRET_FILE=/run/secrets/jwt.key
+    secrets:
+      - source: pg_password
+        target: db_password.txt
+      - source: jwt_secret
+        target: jwt.key
     deploy:
       resources:
         limits:
@@ -20,18 +38,30 @@ services:
           memory: "256M"
 
   frontend:
+    depends_on:
+      backend:
+        condition: service_healthy
+
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:${FRONTEND_PORT}/ || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+
     build: ./client
     ports:
-      - "3000:3000"
+      - "${FRONTEND_PORT}:${FRONTEND_PORT}"  # still needs to be accessible externally
     volumes:
       - ./client/src:/app/src
       - ./client/public:/app/public
       - frontend_node_modules:/app/node_modules
     environment:
-      - WATCHPACK_POLLING=true
+      - NODE_ENV=${NODE_ENV}
+      - WATCHPACK_POLLING=${WATCHPACK_POLLING}
     networks:
-      - frontend_network
-      - backend_network
+      - backend_network  # only this is needed
     deploy:
       resources:
         limits:
@@ -46,7 +76,12 @@ volumes:
   frontend_node_modules:
 
 networks:
-  frontend_network:
-    driver: bridge
   backend_network:
     driver: bridge
+    internal: true  # ✅ Now isolated from the host
+
+secrets:
+  pg_password:
+    file: secrets/pg_password.txt
+  jwt_secret:
+    file: secrets/jwt_secret.txt
