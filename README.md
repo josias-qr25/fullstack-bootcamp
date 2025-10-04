@@ -164,7 +164,6 @@ Every file added, feature tweaked, and bug fixed was part of the learning journe
 
 ## Credits
 
-Built with guidance from OpenAI's ChatGPT 💬 and a lot of persistence.  
 Dark theme inspired by [Nord Theme](https://www.nordtheme.com/).
 
 ---
